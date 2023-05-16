@@ -23,4 +23,6 @@ model Item {
   status ItemStatus
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+
+  @@map("items")
 }
