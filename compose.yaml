@@ -1,0 +1,17 @@
+volumes:
+  postgres_data: {}
+
+services:
+  db:
+    image: postgres:15.3-alpine
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: veri_id_user
+      POSTGRES_PASSWORD: veri_id_password
+      POSTGRES_DB: veri_id_development
+      TZ: Asia/Tokyo
+    volumes:
+      - type: volume
+        source: postgres_data
+        target: /var/lib/postgresql/data
