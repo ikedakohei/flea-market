@@ -9,17 +9,8 @@
     "project": "./tsconfig.json",
     "sourceType": "module"
   },
-  "extends": [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "prettier"
-  ],
-  "plugins": [
-    "import",
-    "sort-keys-fix",
-    "typescript-sort-keys",
-    "unused-imports"
-  ],
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "prettier"],
+  "plugins": ["import", "sort-keys-fix", "typescript-sort-keys", "unused-imports"],
   "rules": {
     "import/order": [
       "error",
