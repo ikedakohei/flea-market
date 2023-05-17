@@ -17,7 +17,7 @@ export class ItemsService {
   async find(id: number): Promise<Item | null> {
     const item = await this.prisma.item.findUnique({ where: { id } });
 
-    if (!item) throw new NotFoundException("Item not found");
+    if (!item) throw new NotFoundException();
 
     return item;
   }
@@ -30,7 +30,7 @@ export class ItemsService {
   async update(id: number, dto: UpdateItemDto): Promise<Item> {
     const item = await this.prisma.item.findUnique({ where: { id } });
 
-    if (!item) throw new NotFoundException("Item not found");
+    if (!item) throw new NotFoundException();
 
     const updatedItem = await this.prisma.item.update({
       data: dto,
@@ -42,7 +42,7 @@ export class ItemsService {
   async delete(id: number): Promise<void> {
     const item = await this.prisma.item.findUnique({ where: { id } });
 
-    if (!item) throw new NotFoundException("Item not found");
+    if (!item) throw new NotFoundException();
 
     await this.prisma.item.delete({
       where: { id },
