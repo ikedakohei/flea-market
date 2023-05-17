@@ -10,8 +10,7 @@ export class ItemsService {
   constructor(private readonly prisma: PrismaService) {}
 
   async findAll(): Promise<Item[]> {
-    const items = await this.prisma.item.findMany();
-    return items;
+    return await this.prisma.item.findMany();
   }
 
   async find(id: number): Promise<Item | null> {
@@ -23,8 +22,7 @@ export class ItemsService {
   }
 
   async create(dto: CreateItemDto): Promise<Item> {
-    const item = await this.prisma.item.create({ data: { status: ItemStatus.ON_SALE, ...dto } });
-    return item;
+    return await this.prisma.item.create({ data: { status: ItemStatus.ON_SALE, ...dto } });
   }
 
   async update(id: number, dto: UpdateItemDto): Promise<Item> {
@@ -32,11 +30,10 @@ export class ItemsService {
 
     if (!item) throw new NotFoundException();
 
-    const updatedItem = await this.prisma.item.update({
+    return await this.prisma.item.update({
       data: dto,
       where: { id },
     });
-    return updatedItem;
   }
 
   async delete(id: number): Promise<void> {
