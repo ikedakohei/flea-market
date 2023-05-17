@@ -21,28 +21,28 @@ export class ItemsController {
   constructor(private readonly itemsService: ItemsService) {}
 
   @Get()
-  findAll() {
-    return this.itemsService.findAll();
+  async findAll(): Promise<Item[]> {
+    return await this.itemsService.findAll();
   }
 
   @Get(":id")
-  find(@Param("id", ParseIntPipe) id: number) {
-    return this.itemsService.find(id);
+  async find(@Param("id", ParseIntPipe) id: number): Promise<Item | null> {
+    return await this.itemsService.find(id);
   }
 
   @Post()
-  create(@Body() dto: CreateItemDto): Promise<Item> {
-    return this.itemsService.create(dto);
+  async create(@Body() dto: CreateItemDto): Promise<Item> {
+    return await this.itemsService.create(dto);
   }
 
   @Patch(":id")
-  update(@Param("id", ParseIntPipe) id: number, @Body() dto: UpdateItemDto): Promise<Item> {
-    return this.itemsService.update(id, dto);
+  async update(@Param("id", ParseIntPipe) id: number, @Body() dto: UpdateItemDto): Promise<Item> {
+    return await this.itemsService.update(id, dto);
   }
 
   @HttpCode(HttpStatus.NO_CONTENT)
   @Delete(":id")
-  delete(@Param("id", ParseIntPipe) id: number): Promise<void> {
-    return this.itemsService.delete(id);
+  async delete(@Param("id", ParseIntPipe) id: number): Promise<void> {
+    return await this.itemsService.delete(id);
   }
 }
