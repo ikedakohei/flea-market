@@ -1,15 +1,18 @@
-import { IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator";
+import { Type } from "class-transformer";
+import { IsInt, IsNotEmpty, IsString, MaxLength, Min } from "class-validator";
 
 export class CreateItemDto {
   @IsString()
-  @IsNotEmpty({ message: "名前を入力してください" })
+  @IsNotEmpty()
+  @MaxLength(40)
   name!: string;
 
-  @IsNumber()
-  @IsNotEmpty()
+  @IsInt()
+  @Min(1)
+  @Type(() => Number)
   price!: number;
 
   @IsString()
-  @IsOptional()
-  description?: string;
+  @IsNotEmpty()
+  description!: string;
 }
