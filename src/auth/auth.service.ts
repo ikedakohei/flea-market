@@ -18,8 +18,8 @@ export class AuthService {
         data: { email: dto.email, hashedPassword, name: dto.name, status: dto.status },
       });
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const { hashedPassword: _, ...signedUpUser } = user;
-      return signedUpUser;
+      const { hashedPassword: _, ...publicUser } = user;
+      return publicUser;
     } catch (error) {
       if (error instanceof Prisma.PrismaClientKnownRequestError) {
         if (error.code === "P2002") {
