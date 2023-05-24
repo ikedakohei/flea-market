@@ -8,8 +8,8 @@ CREATE TABLE "items" (
     "price" INTEGER NOT NULL,
     "description" TEXT,
     "status" "ItemStatus" NOT NULL,
-    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" TIMESTAMP(3) NOT NULL,
+    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "items_pkey" PRIMARY KEY ("id")
 );
